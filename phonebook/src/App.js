@@ -13,9 +13,17 @@ const App = () => {
     const nameObject = {
       name: newName,
     }
-    setPersons(persons.concat(nameObject))
-    setNewName('')
+    console.log(newName);
+    console.log(persons);
+    if(persons.some(person => person.name === newName)) {
+      alert(`${newName} is already added`)
+    }
+    else {
+      setPersons(persons.concat(nameObject))
+      setNewName('')
+    }
   }
+  
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
@@ -37,7 +45,7 @@ const App = () => {
         {persons.map((person, i) => <Name key={i} person={person}/>)}
       </ul>
     </div>
-  )
+  ) 
 
 }
 const Name = (props) => {
