@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import peopleService from './services/people'
 import AddPersonForm from './components/AddPersonForm'
 import FilterPersonList from './components/FilterPersonList'
 import FilterForm from './components/FilterForm'
+import { getAllByAltText } from '@testing-library/react'
 
 const App = () => {
   const [ persons, setPersons ] = useState([]) 
@@ -11,9 +13,8 @@ const App = () => {
   const [ newSearch, setNewSearch]=useState('')
 
   const getDatafromServer = () => {
-    console.log('effect')
-    axios.get('http://localhost:3001/persons').then(response => {
-      console.log('promise fulfilled')
+    peopleService
+    .getAll().then(response => {
       setPersons(response.data)
     })
   }
@@ -29,9 +30,8 @@ const App = () => {
       alert(`${newName} is already added`)
     }
     else {
-      axios
-        .post('http://localhost:3001/persons', nameObject)
-        .then(response => { 
+      peopleService
+      .create(nameObject).then(response => { 
           console.log(response)
           setPersons(persons.concat(response.data))
           setNewName('')
