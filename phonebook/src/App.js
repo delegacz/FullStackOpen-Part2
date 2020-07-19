@@ -4,14 +4,17 @@ import peopleService from './services/people'
 import AddPersonForm from './components/AddPersonForm'
 import FilterPersonList from './components/FilterPersonList'
 import FilterForm from './components/FilterForm'
+import Notification from './components/Notification'
 import { getAllByAltText } from '@testing-library/react'
+
 
 const App = () => {
   const [ persons, setPersons ] = useState([]) 
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber]= useState('')
   const [ newSearch, setNewSearch]=useState('')
-
+  const [message, setMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const getDatafromServer = () => {
     peopleService
@@ -28,6 +31,7 @@ const App = () => {
       name: newName,
       number: newNumber
     }
+
     const updateNumberOfExistingPerson = (id) => {
       const person = persons.find(p => p.id === id)
       const updatedPerson = {...person, number: newNumber}
@@ -36,6 +40,11 @@ const App = () => {
        setPersons(persons.map(person => person.id !== id ? person : updatedPerson))
        setNewName('')
        setNewNumber('')
+       setMessage(`Number of ${person.name} was updated`)
+       setTimeout(() => {setMessage(null)},5000)
+     }).catch(error => {
+       setErrorMessage(`${person.name} was already removed from server, Update wasn't sucessful`)
+       setTimeout(() => {setErrorMessage(null)},5000)
      })
     }
 
@@ -51,10 +60,12 @@ const App = () => {
           console.log(response)
           setPersons(persons.concat(response))
           setNewName('')
-          setNewNumber('')})
+          setNewNumber('')
+          setMessage(`${response.name} with number ${response.number} was added sucessfully`)
+          setTimeout(() => {setMessage(null)},5000)
+        })
     }
   }
-  
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
@@ -67,8 +78,13 @@ const App = () => {
           .then(() => {
             setPersons(persons.filter(n => n.id !== id))
             setNewName('');
-            setNewNumber('');}
-          )
+            setNewNumber('');
+            setMessage(`Deletion was sucessfully`)
+            setTimeout(() => {setMessage(null)},5000)})
+              .catch(error => {
+              setErrorMessage(`Record with ${id} was already removed from server `)
+              setTimeout(() => {setErrorMessage(null)},5000)
+            })
       }
   }
   const handleNumberChange = (event) => {
@@ -78,12 +94,11 @@ const App = () => {
   const handleSearch = (event) => {
     setNewSearch(event.target.value)
   }
-  
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message} errorMessage={errorMessage}/>
       <FilterForm newSearch={newSearch} handleSearch={handleSearch}/>
-      
       <AddPersonForm  addName={addName}  
                       newName={newName} 
                       newNumber={newNumber} 
@@ -95,7 +110,6 @@ const App = () => {
       </ul>
     </div>
   ) 
-
 }
 
 export default App

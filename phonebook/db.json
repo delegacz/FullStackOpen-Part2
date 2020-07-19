@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "name": "Adaa Lovelace",
-      "number": "0700-zadzwonkurwo",
-      "id": 3
-    },
-    {
       "name": "Arto Hellas",
       "number": "040-123456",
       "id": 4
@@ -27,8 +22,13 @@
     },
     {
       "name": "Test2",
-      "number": "040-123456",
+      "number": "12313213123",
       "id": 8
+    },
+    {
+      "name": "Mateusz ",
+      "number": "23123123 1",
+      "id": 9
     }
   ]
 }
