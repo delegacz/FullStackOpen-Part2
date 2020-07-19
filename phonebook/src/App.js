@@ -12,13 +12,15 @@ const App = () => {
   const [ newNumber, setNewNumber]= useState('')
   const [ newSearch, setNewSearch]=useState('')
 
+
   const getDatafromServer = () => {
     peopleService
     .getAll().then(response => {
-      setPersons(response.data)
+      setPersons(response)
     })
   }
   useEffect(getDatafromServer, [])
+  
   const addName = (event) => {
     event.preventDefault()
     console.log('Click')
@@ -33,7 +35,7 @@ const App = () => {
       peopleService
       .create(nameObject).then(response => { 
           console.log(response)
-          setPersons(persons.concat(response.data))
+          setPersons(persons.concat(response))
           setNewName('')
           setNewNumber('')})
     }
@@ -42,6 +44,18 @@ const App = () => {
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
+  }
+  const handleDeleteRequest = (id) => {
+      if(window.confirm('Are you sure you want to delete entry ID: ' + id )) {
+        console.log(persons)
+        peopleService
+          .deletePerson(id)
+          .then(() => {
+            setPersons(persons.filter(n => n.id !== id))
+            setNewName('');
+            setNewNumber('');}
+          )
+      }
   }
   const handleNumberChange = (event) => {
     console.log(event.target.value)
@@ -63,7 +77,7 @@ const App = () => {
                       handleNumberChange={handleNumberChange}/>
       <h2>Numbers</h2>
       <ul>
-        <FilterPersonList newSearch={newSearch} persons={persons}  />
+        <FilterPersonList newSearch={newSearch} persons={persons} handleDeleteRequest={handleDeleteRequest} />
       </ul>
     </div>
   ) 

@@ -2,7 +2,9 @@ import React from 'react'
 
 const DisplayPersonsList = (props) => {
     return (
-    <li>{props.person.name} {props.person.number}</li>
+    <li key={props.person.id}> {props.person.name} {props.person.number} 
+    <button value={props.person.id}  onClick={props.handleDeleteRequest}>delete</button>
+    </li>
     )
 }
 
