@@ -28,8 +28,22 @@ const App = () => {
       name: newName,
       number: newNumber
     }
+    const updateNumberOfExistingPerson = (id) => {
+      const person = persons.find(p => p.id === id)
+      const updatedPerson = {...person, number: newNumber}
+      peopleService
+      .update(id, updatedPerson).then(updatedPerson => {
+       setPersons(persons.map(person => person.id !== id ? person : updatedPerson))
+       setNewName('')
+       setNewNumber('')
+     })
+    }
+
     if(persons.some(person => person.name === newName)) {
-      alert(`${newName} is already added`)
+        if(window.confirm(`${newName} is already added, replace the old number with new one? `)) {
+          const foundperson = persons.find(p => p.name ===  newName)
+          updateNumberOfExistingPerson(foundperson.id)
+        }
     }
     else {
       peopleService

@@ -2,7 +2,7 @@
   "persons": [
     {
       "name": "Adaa Lovelace",
-      "number": "39-44-5323523",
+      "number": "0700-zadzwonkurwo",
       "id": 3
     },
     {
@@ -11,124 +11,24 @@
       "id": 4
     },
     {
-      "name": "Ada Lovelace",
+      "name": "Denis Guler",
       "number": "39-44-5323523",
       "id": 5
     },
     {
-      "name": "Dan Abramov",
+      "name": "Benini",
       "number": "12-43-234345",
       "id": 6
     },
     {
-      "name": "Mary Poppendieck",
+      "name": "Test1",
       "number": "39-23-6423122",
       "id": 7
     },
     {
-      "name": "Arto Hellas",
+      "name": "Test2",
       "number": "040-123456",
       "id": 8
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 9
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 10
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 11
-    },
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 12
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 13
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 14
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 15
-    },
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 16
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 17
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 18
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 19
-    },
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 20
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 22
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 23
-    },
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 24
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 26
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": 27
-    },
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 28
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 29
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 30
     }
   ]
 }
